@@ -1,10 +1,10 @@
 import { Outlet, Navigate, Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import Header from "../components/Header";
-import { HomeIcon } from "@heroicons/react/24/solid";
+import { HomeIcon, ListBulletIcon, LockClosedIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 
 export default function AuthenticatedLayout() {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
 
     if (!isAuthenticated) {
         return <Navigate to="/" />;
@@ -22,16 +22,28 @@ export default function AuthenticatedLayout() {
             <footer className="bg-white border-t mt-4">
                 <div className="grid grid-cols-4 text-center text-gray-600 p-2 md:gap-4">
                     <Link to={"/home"} className="text-blue-600 font-bold flex justify-center">
-                        <HomeIcon className="w-10 text-black" title="Home" />
+                        <div className="flex flex-col items-center">
+                            <HomeIcon className="w-10 text-black" />
+                            <span className="text-sm text-black mt-1">Home</span>
+                        </div>
                     </Link>
                     <Link to={"/passenger"} className="text-blue-600 font-bold flex justify-center">
-                        Nuevo Pasajero
+                        <div className="flex flex-col items-center">
+                            <UserPlusIcon className="w-10 text-black" title="Nuevo Pasajero" />
+                            <span className="text-sm text-black mt-1">Crear Pasajero</span>
+                        </div>
                     </Link>
-                    <button className="hover:text-blue-600 flex justify-center">
-                        Lista de pasajeros
-                    </button>
-                    <button className="hover:text-blue-600 flex justify-center">
-                        Salir
+                    <Link to={"/passengers"} className="text-blue-600 font-bold flex justify-center">
+                        <div className="flex flex-col items-center">
+                            <ListBulletIcon className="w-10 text-black" title="Pasajeros" />
+                            <span className="text-sm text-black mt-1">Pasajeros</span>
+                        </div>
+                    </Link>
+                    <button className="hover:text-blue-600 flex justify-center" onClick={() => logout()}>
+                        <div className="flex flex-col items-center">
+                            <LockClosedIcon className="w-10 text-black" title="Salir" />
+                            <span className="text-sm text-black mt-1">Salir</span>
+                        </div>
                     </button>
                 </div>
             </footer>

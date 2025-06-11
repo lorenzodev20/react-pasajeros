@@ -16,6 +16,8 @@ export type PaymentMethod = BaseEntity & {
     method: string;
 };
 
+export type PaymentMethodList = Omit<PaymentMethod, 'created_at' | 'updated_at' | 'deleted_at'>
+
 export type Passenger = BaseEntity & {
     name: string;
     last_name: string;
@@ -27,3 +29,13 @@ export type Payment = BaseEntity & {
     payment_method_id: number;
     passenger_id: Passenger['id'];
 };
+
+export type PassengerPreview = Omit<Passenger, 'id' | 'payment_status' | 'created_at' | 'updated_at' | 'deleted_at'>
+
+export type PassengerForList = Omit<Passenger, 'created_at' | 'updated_at' | 'deleted_at'>
+
+export type AllPassengersResponse =
+    | { passengers: PassengerForList[] }
+    | { error: any };
+
+export type PaymentPreview = Omit<Payment, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>
