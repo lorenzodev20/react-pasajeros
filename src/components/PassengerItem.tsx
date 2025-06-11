@@ -1,4 +1,4 @@
-import { BanknotesIcon, DocumentMagnifyingGlassIcon, ListBulletIcon } from '@heroicons/react/24/solid';
+import { BanknotesIcon, DocumentMagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router';
 
 type PassengerItemProps = {

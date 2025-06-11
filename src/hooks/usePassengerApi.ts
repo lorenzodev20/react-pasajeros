@@ -67,7 +67,7 @@ export const usePassengerApi = () => {
         }
     }
 
-    const paymentStore = async ({ amount, passenger_id, payment_method_id, created_at, updated_at, deleted_at }: Payment) => {
+    const paymentStore = async ({ amount, passenger_id, payment_method_id, created_at, updated_at }: Payment) => {
         try {
             const { data, error } = await supabase
                 .from('payments')

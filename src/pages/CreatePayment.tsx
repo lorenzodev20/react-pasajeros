@@ -1,4 +1,4 @@
-import { useMemo, useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import type { PaymentPreview } from "../types";
 import SuccessMessage from "../components/SuccessMessage";
 import { paymentMethod } from "../data/payments_methods";

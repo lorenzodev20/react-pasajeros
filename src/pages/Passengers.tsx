@@ -1,4 +1,4 @@
-import type { Passenger, PassengerForList } from '../types';
+import type { PassengerForList } from '../types';
 import { useEffect, useState } from 'react';
 import { usePassengerApi } from '../hooks/usePassengerApi';
 import PassengerItem from '../components/PassengerItem';
