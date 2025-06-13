@@ -8,6 +8,7 @@ import CreatePassenger from "./pages/CreatePassenger";
 import RedirectToHomeIfAuthenticated from "./routes/RedirectToHomeIfAuthenticated";
 import Passengers from "./pages/Passengers";
 import CreatePayment from "./pages/CreatePayment";
+import EditPassenger from "./pages/EditPassenger";
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
             <Route element={<AuthenticatedLayout />}>
               <Route path="/home" element={<Home />} />
               <Route path="/passenger" element={<CreatePassenger />} />
+              <Route path="/passenger/:passengerId/edit" element={<EditPassenger />} />
               <Route path="/passengers" element={<Passengers />} />
-              <Route path="/payments/:passengerId" element={<CreatePayment/>} />
+              <Route path="/payments/:passengerId" element={<CreatePayment />}/>
               {/* Aquí puedes agregar más rutas autenticadas */}
             </Route>
 

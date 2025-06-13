@@ -5,7 +5,8 @@ export type PassengerActions =
 
 export type PassengerState = {
     passengers: Passenger[],
-    passengerPreview: PassengerPreview
+    passengerPreview: PassengerPreview,
+    passengerDetail:  Passenger,
 }
 
 export const initialPassengerPreview = {
@@ -13,9 +14,22 @@ export const initialPassengerPreview = {
     last_name: ''
 };
 
+export const initialPassenger: Passenger = {
+    id: 0,
+    name: '',
+    last_name: '',
+    identity: '',
+    payment_status: 1,
+    notes:'',
+    created_at: new Date(),
+    updated_at: new Date(),
+    deleted_at: new Date(),
+};
+
 export const initialState: PassengerState = {
     passengers: [],
-    passengerPreview: initialPassengerPreview
+    passengerPreview: initialPassengerPreview,
+    passengerDetail: initialPassenger
 }
 
 export const passengerReducer = (

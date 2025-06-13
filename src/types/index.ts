@@ -21,7 +21,10 @@ export type PaymentMethodList = Omit<PaymentMethod, 'created_at' | 'updated_at' 
 export type Passenger = BaseEntity & {
     name: string;
     last_name: string;
-    payment_status: PaymentStatus['id']
+    payment_status: PaymentStatus['id'];
+    identity?: string;
+    notes?: string;
+    created_by_user?: string;
 };
 
 export type Payment = BaseEntity & {

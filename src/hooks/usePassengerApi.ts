@@ -37,13 +37,13 @@ export const usePassengerApi = () => {
                 .select()
 
             if (error) {
-                console.error("Supabase insert error:", error);
+                console.error("Supabase storePassenger error:", error);
                 return { error };
             }
 
             return { data };
         } catch (err) {
-            console.error("Unexpected error:", err);
+            console.error("Unexpected storePassenger error:", err);
             return { error: err };
         }
     }
@@ -53,7 +53,8 @@ export const usePassengerApi = () => {
         try {
             let { data: passengers, error } = await supabase
                 .from('passengers')
-                .select(`id, name, last_name, payment_status`);
+                .select(`id, name, last_name, payment_status`)
+                .order('id', { ascending: false });
 
             if (error) {
                 console.error("Supabase select error:", error);
@@ -84,12 +85,52 @@ export const usePassengerApi = () => {
             return { error: err };
         }
     }
+    type PassengerResponse = { passenger: Passenger | null, error?: any }
+
+    const getPassenger = async (passengerId: number): Promise<PassengerResponse> => {
+        try {
+            let { data, error } = await supabase
+                .from('passengers')
+                .select("*")
+                .eq('id', passengerId)
+
+            if (error) {
+                console.error("Supabase getPassenger error:", error);
+                return { passenger: null, error };
+            }
+            return { passenger: data?.[0] ?? null };
+        } catch (err) {
+            console.error("Unexpected getPassenger error:", err);
+            return { passenger: null, error: err };
+        }
+    }
+
+    const updatePassenger = async (passengerId: number, { name, last_name, notes, identity }: Passenger): Promise<PassengerResponse> => {
+        try {
+            let { data, error } = await supabase
+                .from('passengers')
+                .update({ name, last_name, notes, identity })
+                .eq('id', passengerId)
+                .select();
+
+            if (error) {
+                console.error("Supabase updatePassenger error:", error);
+                return { passenger: null, error };
+            }
+            return { passenger: data?.[0] ?? null };
+        } catch (err) {
+            console.error("Unexpected updatePassenger error:", err);
+            return { passenger: null, error: err };
+        }
+    }
 
     return {
         store,
         parsePassenger,
         all,
         paymentStore,
-        parsePayment
+        parsePayment,
+        getPassenger,
+        updatePassenger
     }
 }
