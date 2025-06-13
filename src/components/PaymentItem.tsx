@@ -9,7 +9,7 @@ type PaymentItemProps = {
     created_at: Date
 }
 
-export default function PaymentItem({ id, amount, payment_method_id, created_at }: Readonly<PaymentItemProps>) {
+export default function PaymentItem({ amount, payment_method_id, created_at }: Readonly<PaymentItemProps>) {
     const { method } = paymentMethod.find( p => p.id === payment_method_id) as PaymentMethodList;
     return (
         <div className="bg-white shadow rounded-md p-4 flex justify-between items-center m-2">
