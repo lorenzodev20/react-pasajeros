@@ -19,7 +19,7 @@ export default function AuthenticatedLayout() {
             </div>
 
             {/* Menú inferior */}
-            <footer className="bg-white border-t">
+            <footer className="bg-white border-t -translate-y-3/12 md:-translate-0">
                 <div className="grid grid-cols-4 text-center text-gray-600 p-2 md:gap-4">
                     <Link to={"/home"} className="text-blue-600 font-bold flex justify-center">
                         <div className="flex flex-col items-center">
@@ -30,7 +30,7 @@ export default function AuthenticatedLayout() {
                     <Link to={"/passenger"} className="text-blue-600 font-bold flex justify-center">
                         <div className="flex flex-col items-center">
                             <UserPlusIcon className="w-10 text-black" title="Nuevo Pasajero" />
-                            <span className="text-sm text-black mt-1">Crear Pasajero</span>
+                            <span className="text-sm text-black mt-1">Nuevo</span>
                         </div>
                     </Link>
                     <Link to={"/passengers"} className="text-blue-600 font-bold flex justify-center">
