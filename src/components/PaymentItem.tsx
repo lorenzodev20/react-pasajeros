@@ -1,5 +1,3 @@
-import { BanknotesIcon, DocumentMagnifyingGlassIcon, PencilSquareIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router';
 import { formatCurrency, formatDate } from '../utils';
 import { paymentMethod } from '../data/payments_methods';
 import type { PaymentMethodList } from '../types';
