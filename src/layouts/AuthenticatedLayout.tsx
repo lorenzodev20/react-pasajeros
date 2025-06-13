@@ -19,7 +19,7 @@ export default function AuthenticatedLayout() {
             </div>
 
             {/* Menú inferior */}
-            <footer className="bg-white border-t -translate-y-3/12 md:-translate-0">
+            <footer className="bg-white border-t -translate-y-5/12 md:-translate-0">
                 <div className="grid grid-cols-4 text-center text-gray-600 p-2 md:gap-4">
                     <Link to={"/home"} className="text-blue-600 font-bold flex justify-center">
                         <div className="flex flex-col items-center">
