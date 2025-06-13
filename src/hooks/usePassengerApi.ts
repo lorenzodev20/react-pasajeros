@@ -87,6 +87,8 @@ export const usePassengerApi = () => {
     }
     type PassengerResponse = { passenger: Passenger | null, error?: any }
 
+    type PaymentsResponse = { payments: Payment[] | null, error?: any }
+
     const getPassenger = async (passengerId: number): Promise<PassengerResponse> => {
         try {
             let { data, error } = await supabase
@@ -124,6 +126,25 @@ export const usePassengerApi = () => {
         }
     }
 
+    const getPayments = async (passengerId: number): Promise<PaymentsResponse> => {
+        try {
+            let { data, error } = await supabase
+                .from('payments')
+                .select("*")
+                .eq('passenger_id', passengerId)
+                .order('id', { ascending: true });
+
+            if (error) {
+                console.error("Supabase getPayments error:", error);
+                return { payments: null, error };
+            }
+            return { payments: data ?? null };
+        } catch (err) {
+            console.error("Unexpected getPayments error:", err);
+            return { payments: null, error: err };
+        }
+    }
+
     return {
         store,
         parsePassenger,
@@ -131,6 +152,7 @@ export const usePassengerApi = () => {
         paymentStore,
         parsePayment,
         getPassenger,
-        updatePassenger
+        updatePassenger,
+        getPayments
     }
 }
