@@ -24,9 +24,9 @@ export default function PassengerItem({ id, name, last_name }: Readonly<Passenge
                 <Link to={`/passenger/${id}/edit`} className="bg-blue-50 text-white px-2 py-1 rounded hover:bg-yellow-500">
                     <PencilSquareIcon className="w-5 text-black" title="Editar" />
                 </Link>
-                <button className="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500">
+                <Link to={`/passenger/${id}/detail`} className="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500">
                     <DocumentMagnifyingGlassIcon className="w-5 text-black" title="Detalle pasajero" />
-                </button>
+                </Link>
             </div>
         </div>
     )
